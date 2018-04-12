@@ -64,7 +64,7 @@
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/fab_margin"
         app:backgroundTint="@color/main_color"
-        android:src="@drawable/ic_arrow_upward"
+        android:src="@drawable/ic_account"
         app:layout_behavior="com.jaydenxiao.androidfire.widget.ScrollAwareFABBehavior"/>
 
 </android.support.design.widget.CoordinatorLayout>

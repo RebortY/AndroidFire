@@ -1,5 +1,6 @@
 package com.jaydenxiao.androidfire.ui.main.fragment;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
@@ -12,6 +13,7 @@ import android.widget.ImageView;
 import com.jaydenxiao.androidfire.R;
 import com.jaydenxiao.androidfire.app.AppConstant;
 import com.jaydenxiao.androidfire.bean.NewsChannelTable;
+import com.jaydenxiao.androidfire.ui.main.activity.LoginActivity;
 import com.jaydenxiao.androidfire.ui.news.activity.NewsChannelActivity;
 import com.jaydenxiao.androidfire.ui.main.contract.NewsMainContract;
 import com.jaydenxiao.androidfire.ui.news.fragment.NewsFrament;
@@ -63,7 +65,11 @@ public class NewsMainFragment extends BaseFragment<NewsMainPresenter,NewsMainMod
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mRxManager.post(AppConstant.NEWS_LIST_TO_TOP, "");
+                Activity activity = getActivity();
+                if (activity != null) {
+                    LoginActivity.start(getActivity());
+                }
+//                mRxManager.post(AppConstant.NEWS_LIST_TO_TOP, "");
             }
         });
     }

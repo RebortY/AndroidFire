@@ -36,4 +36,7 @@ public class AppConstant {
     public static final String NEWS_IMG_RES = "news_img_res";
     public static final String TRANSITION_ANIMATION_NEWS_PHOTOS = "transition_animation_news_photos";
 
+    public static final String LOGIN = "APP_LOGIN"; //应用登录消息
+
+
 }

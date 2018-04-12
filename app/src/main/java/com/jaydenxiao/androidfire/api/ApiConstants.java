@@ -16,6 +16,8 @@
  */
 package com.jaydenxiao.androidfire.api;
 
+import com.jaydenxiao.androidfire.BuildConfig;
+
 public class ApiConstants {
     public static final String NETEAST_HOST = "http://c.m.163.com/";
     public static final String END_URL = "-20.html";
@@ -172,6 +174,9 @@ public class ApiConstants {
                 break;
             case HostType.NEWS_DETAIL_HTML_PHOTO:
                 host = "http://kaku.com/";
+                break;
+            case HostType.APP_HOST:
+                host = BuildConfig.apiHost;
                 break;
             default:
                 host = "";

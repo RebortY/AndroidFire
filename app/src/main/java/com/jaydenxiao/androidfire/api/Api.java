@@ -87,7 +87,11 @@ public class Api {
             @Override
             public Response intercept(Chain chain) throws IOException {
                 Request build = chain.request().newBuilder()
-                        .addHeader("Content-Type", "application/json")
+                        .addHeader("Content-Type", "application/json;charset=utf-8")
+                        .addHeader("User-Agent", "hot fire android")
+//                        .addHeader("Accept-Encoding", "gzip, deflate")
+//                        .addHeader("Accept", "*/*")
+//                        .addHeader("Accept-Language", "zh-CN,zh;q=0.9,en;q=0.")
                         .build();
                 return chain.proceed(build);
             }
@@ -125,6 +129,13 @@ public class Api {
             sRetrofitManager.put(hostType, retrofitManager);
         }
         return retrofitManager.movieService;
+    }
+
+    /**
+     * 获取应用基础api
+     */
+    public static ApiService getApi() {
+        return getDefault(HostType.APP_HOST);
     }
 
     /**

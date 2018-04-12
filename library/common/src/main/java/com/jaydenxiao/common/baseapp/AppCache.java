@@ -8,6 +8,7 @@ import android.content.Context;
 public class AppCache {
     private Context context;//应用实例
     private volatile static AppCache instance;
+
     private String token;
     private String userId="10000";
     private String userName="锋";

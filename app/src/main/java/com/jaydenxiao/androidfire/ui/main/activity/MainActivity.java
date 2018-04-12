@@ -42,17 +42,22 @@ public class MainActivity extends BaseActivity {
     @Bind(R.id.tab_layout)
     CommonTabLayout tabLayout;
 
-    private String[] mTitles = {"首页", "美女","视频","关注"};
+//    private String[] mTitles = {"首页", "美女","视频","关注"};
+    private String[] mTitles = {"首页", "美女","视频"};
+//    private int[] mIconUnselectIds = {
+//            R.mipmap.ic_home_normal,R.mipmap.ic_girl_normal,R.mipmap.ic_video_normal,R.mipmap.ic_care_normal};
     private int[] mIconUnselectIds = {
-            R.mipmap.ic_home_normal,R.mipmap.ic_girl_normal,R.mipmap.ic_video_normal,R.mipmap.ic_care_normal};
+        R.mipmap.ic_home_normal,R.mipmap.ic_girl_normal,R.mipmap.ic_video_normal};
+//    private int[] mIconSelectIds = {
+//            R.mipmap.ic_home_selected,R.mipmap.ic_girl_selected, R.mipmap.ic_video_selected,R.mipmap.ic_care_selected};
     private int[] mIconSelectIds = {
-            R.mipmap.ic_home_selected,R.mipmap.ic_girl_selected, R.mipmap.ic_video_selected,R.mipmap.ic_care_selected};
+        R.mipmap.ic_home_selected,R.mipmap.ic_girl_selected, R.mipmap.ic_video_selected};
     private ArrayList<CustomTabEntity> mTabEntities = new ArrayList<>();
 
     private NewsMainFragment newsMainFragment;
     private PhotosMainFragment photosMainFragment;
     private VideoMainFragment videoMainFragment;
-    private CareMainFragment careMainFragment;
+//    private CareMainFragment careMainFragment;
     private static int tabLayoutHeight;
 
     /**
@@ -96,13 +101,13 @@ public class MainActivity extends BaseActivity {
         tabLayout.measure(0,0);
         tabLayoutHeight=tabLayout.getMeasuredHeight();
         //监听菜单显示或隐藏
-        mRxManager.on(AppConstant.MENU_SHOW_HIDE, new Action1<Boolean>() {
-
-            @Override
-            public void call(Boolean hideOrShow) {
-                startAnimation(hideOrShow);
-            }
-        });
+//        mRxManager.on(AppConstant.MENU_SHOW_HIDE, new Action1<Boolean>() {
+//
+//            @Override
+//            public void call(Boolean hideOrShow) {
+//                startAnimation(hideOrShow);
+//            }
+//        });
     }
     /**
      * 初始化tab
@@ -133,18 +138,18 @@ public class MainActivity extends BaseActivity {
             newsMainFragment = (NewsMainFragment) getSupportFragmentManager().findFragmentByTag("newsMainFragment");
             photosMainFragment = (PhotosMainFragment) getSupportFragmentManager().findFragmentByTag("photosMainFragment");
             videoMainFragment = (VideoMainFragment) getSupportFragmentManager().findFragmentByTag("videoMainFragment");
-            careMainFragment = (CareMainFragment) getSupportFragmentManager().findFragmentByTag("careMainFragment");
+//            careMainFragment = (CareMainFragment) getSupportFragmentManager().findFragmentByTag("careMainFragment");
             currentTabPosition = savedInstanceState.getInt(AppConstant.HOME_CURRENT_TAB_POSITION);
         } else {
             newsMainFragment = new NewsMainFragment();
             photosMainFragment = new PhotosMainFragment();
             videoMainFragment = new VideoMainFragment();
-            careMainFragment = new CareMainFragment();
+//            careMainFragment = new CareMainFragment();
 
             transaction.add(R.id.fl_body, newsMainFragment, "newsMainFragment");
             transaction.add(R.id.fl_body, photosMainFragment, "photosMainFragment");
             transaction.add(R.id.fl_body, videoMainFragment, "videoMainFragment");
-            transaction.add(R.id.fl_body, careMainFragment, "careMainFragment");
+//            transaction.add(R.id.fl_body, careMainFragment, "careMainFragment");
         }
         transaction.commit();
         SwitchTo(currentTabPosition);
@@ -162,7 +167,7 @@ public class MainActivity extends BaseActivity {
             case 0:
                 transaction.hide(photosMainFragment);
                 transaction.hide(videoMainFragment);
-                transaction.hide(careMainFragment);
+//                transaction.hide(careMainFragment);
                 transaction.show(newsMainFragment);
                 transaction.commitAllowingStateLoss();
                 break;
@@ -170,7 +175,7 @@ public class MainActivity extends BaseActivity {
             case 1:
                 transaction.hide(newsMainFragment);
                 transaction.hide(videoMainFragment);
-                transaction.hide(careMainFragment);
+//                transaction.hide(careMainFragment);
                 transaction.show(photosMainFragment);
                 transaction.commitAllowingStateLoss();
                 break;
@@ -178,18 +183,18 @@ public class MainActivity extends BaseActivity {
             case 2:
                 transaction.hide(newsMainFragment);
                 transaction.hide(photosMainFragment);
-                transaction.hide(careMainFragment);
+//                transaction.hide(careMainFragment);
                 transaction.show(videoMainFragment);
                 transaction.commitAllowingStateLoss();
                 break;
             //关注
-            case 3:
-                transaction.hide(newsMainFragment);
-                transaction.hide(photosMainFragment);
-                transaction.hide(videoMainFragment);
-                transaction.show(careMainFragment);
-                transaction.commitAllowingStateLoss();
-                break;
+//            case 3:
+//                transaction.hide(newsMainFragment);
+//                transaction.hide(photosMainFragment);
+//                transaction.hide(videoMainFragment);
+//                transaction.show(careMainFragment);
+//                transaction.commitAllowingStateLoss();
+//                break;
             default:
                 break;
         }

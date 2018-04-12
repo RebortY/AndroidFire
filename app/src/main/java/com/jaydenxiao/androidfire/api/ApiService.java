@@ -1,20 +1,24 @@
 package com.jaydenxiao.androidfire.api;
 
 import com.jaydenxiao.androidfire.bean.GirlData;
+import com.jaydenxiao.androidfire.bean.rep.BaseRep;
+import com.jaydenxiao.androidfire.bean.req.LoginReq;
 import com.jaydenxiao.androidfire.bean.NewsDetail;
 import com.jaydenxiao.androidfire.bean.NewsSummary;
 import com.jaydenxiao.androidfire.bean.User;
 import com.jaydenxiao.androidfire.bean.VideoData;
+import com.jaydenxiao.androidfire.bean.req.RegistReq;
 import com.jaydenxiao.common.basebean.BaseRespose;
 
 import java.util.List;
 import java.util.Map;
 
 import okhttp3.ResponseBody;
+import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
+import retrofit2.http.POST;
 import retrofit2.http.Path;
-import retrofit2.http.Query;
 import retrofit2.http.Url;
 import rx.Observable;
 
@@ -25,8 +29,14 @@ import rx.Observable;
  */
 public interface ApiService {
 
-    @GET("login")
-    Observable<BaseRespose<User>> login(@Query("username") String username, @Query("password") String password);
+    @POST("/account/login")
+    Observable<BaseRep<User>> login(@Body LoginReq loginReq);
+
+    @POST("/account/register")
+    Observable<BaseRep<User>> register(@Body RegistReq registReq);
+
+    @POST("/account/verify")
+    Observable<BaseRep<Boolean>> verify(@Body String phone);
 
     @GET("nc/article/{postId}/full.html")
     Observable<Map<String, NewsDetail>> getNewDetail(
@@ -57,4 +67,8 @@ public interface ApiService {
             @Header("Cache-Control") String cacheControl,
             @Path("type") String type,
             @Path("startPage") int startPage);
+
+    // 获取开屏图
+
+
 }
