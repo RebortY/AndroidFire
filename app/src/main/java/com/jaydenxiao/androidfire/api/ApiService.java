@@ -1,5 +1,6 @@
 package com.jaydenxiao.androidfire.api;
 
+import com.google.gson.JsonObject;
 import com.jaydenxiao.androidfire.bean.GirlData;
 import com.jaydenxiao.androidfire.bean.rep.BaseRep;
 import com.jaydenxiao.androidfire.bean.req.LoginReq;
@@ -8,6 +9,7 @@ import com.jaydenxiao.androidfire.bean.NewsSummary;
 import com.jaydenxiao.androidfire.bean.User;
 import com.jaydenxiao.androidfire.bean.VideoData;
 import com.jaydenxiao.androidfire.bean.req.RegistReq;
+import com.jaydenxiao.androidfire.bean.req.VerifyReq;
 import com.jaydenxiao.common.basebean.BaseRespose;
 
 import java.util.List;
@@ -36,7 +38,7 @@ public interface ApiService {
     Observable<BaseRep<User>> register(@Body RegistReq registReq);
 
     @POST("/account/verify")
-    Observable<BaseRep<Boolean>> verify(@Body String phone);
+    Observable<BaseRep<Boolean>> verify(@Body VerifyReq phone);
 
     @GET("nc/article/{postId}/full.html")
     Observable<Map<String, NewsDetail>> getNewDetail(

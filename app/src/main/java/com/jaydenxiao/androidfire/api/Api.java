@@ -7,15 +7,19 @@ import android.util.SparseArray;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.jaydenxiao.androidfire.app.AppConstant;
 import com.jaydenxiao.common.baseapp.BaseApplication;
 import com.jaydenxiao.common.commonutils.NetWorkUtils;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.CookieManager;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.Cache;
 import okhttp3.CacheControl;
+import okhttp3.Cookie;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -174,16 +178,21 @@ public class Api {
                         .cacheControl(TextUtils.isEmpty(cacheControl)?CacheControl.FORCE_NETWORK:CacheControl.FORCE_CACHE)
                         .build();
             }
-            Response originalResponse = chain.proceed(request);
+            // 添加通用cookie处理
+            Request newReq = request.newBuilder()
+                .addHeader("Cookie", String.format("appid=%s", AppConstant.APPID))
+                .build();
+            Response originalResponse = chain.proceed(newReq);
+
+            Response.Builder builder =  originalResponse.newBuilder();
             if (NetWorkUtils.isNetConnected(BaseApplication.getAppContext())) {
                 //有网的时候读接口上的@Headers里的配置，你可以在这里进行统一的设置
-
-                return originalResponse.newBuilder()
+                return builder
                         .header("Cache-Control", cacheControl)
                         .removeHeader("Pragma")
                         .build();
             } else {
-                return originalResponse.newBuilder()
+                return builder
                         .header("Cache-Control", "public, only-if-cached, max-stale=" + CACHE_STALE_SEC)
                         .removeHeader("Pragma")
                         .build();

@@ -13,4 +13,12 @@ public class BaseRep<T> implements Serializable {
     @SerializedName("data")
     public T data;
 
+    @Override
+    public String toString() {
+        return "BaseRep{" +
+            "status=" + status +
+            ", message='" + message + '\'' +
+            ", data=" + data +
+            '}';
+    }
 }

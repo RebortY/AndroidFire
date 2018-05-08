@@ -2,6 +2,7 @@ package com.jaydenxiao.common.commonwidget;
 
 import android.app.Activity;
 import android.app.Dialog;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -40,7 +41,7 @@ public class LoadingDialog {
     public static Dialog showDialogForLoading(Activity context) {
         View view = LayoutInflater.from(context).inflate(R.layout.dialog_loading, null);
         TextView loadingText = (TextView)view.findViewById(R.id.id_tv_loading_dialog_text);
-        loadingText.setText("加载中...");
+        loadingText.setText("加载中");
 
         mLoadingDialog = new Dialog(context, R.style.CustomProgressDialog);
         mLoadingDialog.setCancelable(true);
