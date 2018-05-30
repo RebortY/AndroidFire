@@ -34,7 +34,8 @@ import rx.functions.Action1;
  * Created by xsf
  * on 2016.09.11:51
  */
-public class NewsChannelActivity extends BaseActivity<NewsChanelPresenter, NewsChannelModel>implements NewsChannelContract.View{
+public class  NewsChannelActivity extends BaseActivity<NewsChanelPresenter, NewsChannelModel>implements
+    NewsChannelContract.View{
     @Bind(R.id.toolbar)
     Toolbar toolbar;
     @Bind(R.id.news_channel_mine_rv)

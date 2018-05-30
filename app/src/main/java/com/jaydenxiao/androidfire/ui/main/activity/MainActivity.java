@@ -16,6 +16,7 @@ import com.flyco.tablayout.listener.OnTabSelectListener;
 import com.jaydenxiao.androidfire.R;
 import com.jaydenxiao.androidfire.app.AppConstant;
 import com.jaydenxiao.androidfire.bean.TabEntity;
+import com.jaydenxiao.androidfire.ui.main.activity.login.LoginManager;
 import com.jaydenxiao.androidfire.ui.main.fragment.CareMainFragment;
 import com.jaydenxiao.androidfire.ui.main.fragment.NewsMainFragment;
 import com.jaydenxiao.androidfire.ui.main.fragment.PhotosMainFragment;

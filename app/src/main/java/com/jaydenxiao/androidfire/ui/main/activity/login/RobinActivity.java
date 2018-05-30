@@ -61,8 +61,8 @@ public abstract class RobinActivity extends BaseActivity {
     /**
      * Override form signup
      *
-     * @param email    username or email address entered by user
-     * @param password raw password
+     * @param phone    username or email address entered by user
+     * @param passWord raw password
      */
     protected abstract void onSignup(String phone, String passWord, String comfirmPassWord);
 

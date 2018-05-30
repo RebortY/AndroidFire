@@ -84,7 +84,7 @@ public class Api {
         HttpLoggingInterceptor logInterceptor = new HttpLoggingInterceptor();
         logInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
         //缓存
-        File cacheFile = new File(BaseApplication.getAppContext().getCacheDir(), "cache");
+        File cacheFile = new File(BaseApplication.getAppContext().getCacheDir(), "cacheUser");
         Cache cache = new Cache(cacheFile, 1024 * 1024 * 100); //100Mb
         //增加头部信息
         Interceptor headerInterceptor =new Interceptor() {
@@ -166,7 +166,7 @@ public class Api {
 
     /**
      * 云端响应头拦截器，用来配置缓存策略
-     * Dangerous interceptor that rewrites the server's cache-control header.
+     * Dangerous interceptor that rewrites the server's cacheUser-control header.
      */
     private final Interceptor mRewriteCacheControlInterceptor = new Interceptor() {
         @Override
@@ -188,12 +188,12 @@ public class Api {
             if (NetWorkUtils.isNetConnected(BaseApplication.getAppContext())) {
                 //有网的时候读接口上的@Headers里的配置，你可以在这里进行统一的设置
                 return builder
-                        .header("Cache-Control", cacheControl)
+                        .header("cacheUser-Control", cacheControl)
                         .removeHeader("Pragma")
                         .build();
             } else {
                 return builder
-                        .header("Cache-Control", "public, only-if-cached, max-stale=" + CACHE_STALE_SEC)
+                        .header("cacheUser-Control", "public, only-if-cached, max-stale=" + CACHE_STALE_SEC)
                         .removeHeader("Pragma")
                         .build();
             }

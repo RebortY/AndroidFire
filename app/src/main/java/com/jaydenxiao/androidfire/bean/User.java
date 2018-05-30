@@ -1,5 +1,7 @@
 package com.jaydenxiao.androidfire.bean;
 
+import java.io.Serializable;
+
 import com.google.gson.annotations.SerializedName;
 
 import android.text.TextUtils;
@@ -9,7 +11,7 @@ import android.text.TextUtils;
  * Created by xsf
  * on 2016.09.9:54
  */
-public class User{
+public class User implements Serializable{
 
     @SerializedName("appid")
     public int appId;
@@ -26,5 +28,17 @@ public class User{
 
     public boolean isLogin() {
         return TextUtils.isEmpty(token);
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+            "appId=" + appId +
+            ", id='" + id + '\'' +
+            ", name='" + name + '\'' +
+            ", phone='" + phone + '\'' +
+            ", sex=" + sex +
+            ", token='" + token + '\'' +
+            '}';
     }
 }

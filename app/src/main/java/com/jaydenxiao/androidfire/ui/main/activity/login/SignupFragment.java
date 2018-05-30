@@ -1,6 +1,5 @@
 package com.jaydenxiao.androidfire.ui.main.activity.login;
 
-import com.google.gson.JsonObject;
 import com.jaydenxiao.androidfire.R;
 import com.jaydenxiao.androidfire.api.Api;
 import com.jaydenxiao.androidfire.bean.rep.BaseRep;
@@ -91,7 +90,7 @@ public class SignupFragment extends Fragment {
                     ((RobinActivity) getActivity()).onSignup(phone.getText().toString(), password.getText().toString(),
                                                              confirmPassword.getText().toString());
                 } else {
-                    Toast.makeText(getActivity().getApplicationContext(), "Some information is missing.",
+                    Toast.makeText(getActivity().getApplicationContext(), R.string.no_tips_msg_phone,
                                    Toast.LENGTH_SHORT).show();
                 }
             }
@@ -206,13 +205,8 @@ public class SignupFragment extends Fragment {
     }
 
     private boolean fieldsFilled() {
-        return (!(phone.getText().toString().isEmpty() || password.getText().toString().isEmpty()) && (password
-                                                                                                           .getText()
-                                                                                                           .toString()
-                                                                                                           .equals(
-                                                                                                               confirmPassword
-                                                                                                                   .getText()
-                                                                                                                   .toString())));
+        return (!(phone.getText().toString().isEmpty() || password.getText().toString().isEmpty())
+                    && (password.getText().toString().equals(confirmPassword.getText().toString())));
     }
 
     private void setDefaults() {

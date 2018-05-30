@@ -8,6 +8,7 @@ import android.view.animation.AccelerateInterpolator;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.jaydenxiao.androidfire.R;
 import com.jaydenxiao.androidfire.api.Api;
 import com.jaydenxiao.common.base.BaseActivity;
@@ -33,6 +34,7 @@ public class SplashActivity extends BaseActivity {
     @Override
     public void initPresenter() {
 
+//        Glide.get(this).
         // TODO(yangll): 2018/4/5 此处做开屏图加载
 //        Api.getApi().
     }

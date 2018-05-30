@@ -14,6 +14,7 @@ import com.jaydenxiao.androidfire.R;
 import com.jaydenxiao.androidfire.app.AppConstant;
 import com.jaydenxiao.androidfire.bean.NewsChannelTable;
 import com.jaydenxiao.androidfire.ui.main.activity.LoginActivity;
+import com.jaydenxiao.androidfire.ui.main.activity.login.LoginManager;
 import com.jaydenxiao.androidfire.ui.news.activity.NewsChannelActivity;
 import com.jaydenxiao.androidfire.ui.main.contract.NewsMainContract;
 import com.jaydenxiao.androidfire.ui.news.fragment.NewsFrament;
@@ -28,6 +29,7 @@ import java.util.List;
 
 import butterknife.Bind;
 import butterknife.OnClick;
+import rx.functions.Action1;
 
 /**
  * des:新闻首页首页
@@ -72,7 +74,20 @@ public class NewsMainFragment extends BaseFragment<NewsMainPresenter,NewsMainMod
 //                mRxManager.post(AppConstant.NEWS_LIST_TO_TOP, "");
             }
         });
+
+        if (LoginManager.checkLogin()) {
+            fab.setVisibility(View.GONE);
+        }
+        mRxManager.on(AppConstant.LOGIN, new Action1<Object>() {
+            @Override
+            public void call(Object o) {
+                fab.setVisibility(View.GONE);
+            }
+        });
     }
+
+
+
     @OnClick(R.id.add_channel_iv)
     public void clickAdd(){
         NewsChannelActivity.startAction(getContext());

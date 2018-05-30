@@ -66,7 +66,7 @@ public class LoginFragment extends Fragment {
                 if (fieldsFilled()) {
                     ((RobinActivity) getActivity()).onLogin(email.getText().toString(), password.getText().toString());
                 } else {
-                    Toast.makeText(getContext(), "Some information is missing.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), R.string.no_tips_msg_phone, Toast.LENGTH_SHORT).show();
                 }
             }
         });

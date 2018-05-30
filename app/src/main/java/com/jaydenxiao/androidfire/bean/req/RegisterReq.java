@@ -2,7 +2,7 @@ package com.jaydenxiao.androidfire.bean.req;
 
 import com.google.gson.annotations.SerializedName;
 
-public class RegistReq {
+public class RegisterReq {
 
     @SerializedName("password")
     public String password;

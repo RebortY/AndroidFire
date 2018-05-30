@@ -11,4 +11,12 @@ public class LoginReq {
     @SerializedName("phone")
     public String phone;
 
+    @Override
+    public String toString() {
+        return "LoginReq{" +
+            "appid='" + appid + '\'' +
+            ", password='" + password + '\'' +
+            ", phone='" + phone + '\'' +
+            '}';
+    }
 }
