@@ -15,6 +15,7 @@ public class CacheManager {
     private static final String USER_KEY = "user";
     // 用户的登录名和密码
     private static final String USER_SYS = "user_sys_pw";
+    private static final String PIC_KEY = "PIC";
 
     private static volatile User cacheUser = null;
     private SharePrefrenceHelper dbHelper = null;
@@ -61,6 +62,14 @@ public class CacheManager {
             return null;
         }
         return gson.fromJson(sysStr, LoginReq.class);
+    }
+
+    public void chachePic(String path) {
+        dbHelper.putString(PIC_KEY, path);
+    }
+
+    public String getPic() {
+        return dbHelper.getString(PIC_KEY);
     }
 
 }

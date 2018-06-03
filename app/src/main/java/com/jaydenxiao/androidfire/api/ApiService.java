@@ -7,6 +7,7 @@ import com.jaydenxiao.androidfire.bean.NewsDetail;
 import com.jaydenxiao.androidfire.bean.NewsSummary;
 import com.jaydenxiao.androidfire.bean.User;
 import com.jaydenxiao.androidfire.bean.VideoData;
+import com.jaydenxiao.androidfire.bean.req.PicReq;
 import com.jaydenxiao.androidfire.bean.req.RegisterReq;
 import com.jaydenxiao.androidfire.bean.req.VerifyReq;
 
@@ -40,6 +41,9 @@ public interface ApiService {
 
     @POST("/account/reg") // 不需要手机验证码
     Observable<BaseRep<User>> reg(@Body RegisterReq registerReq);
+
+    @GET("/picture/view/1242*2208")
+    Observable<BaseRep<PicReq>> pic();
 
 
     @GET("nc/article/{postId}/full.html")
