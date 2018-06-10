@@ -9,6 +9,7 @@ import com.jaydenxiao.androidfire.bean.User;
 import com.jaydenxiao.androidfire.bean.VideoData;
 import com.jaydenxiao.androidfire.bean.req.PicReq;
 import com.jaydenxiao.androidfire.bean.req.RegisterReq;
+import com.jaydenxiao.androidfire.bean.req.UpdateVersion;
 import com.jaydenxiao.androidfire.bean.req.VerifyReq;
 
 import java.util.List;
@@ -44,6 +45,9 @@ public interface ApiService {
 
     @GET("/picture/view/1242*2208")
     Observable<BaseRep<PicReq>> pic();
+
+    @GET("/version/{version}")
+    Observable<BaseRep<UpdateVersion>> checkUpdate(@Path("version") int version);
 
 
     @GET("nc/article/{postId}/full.html")

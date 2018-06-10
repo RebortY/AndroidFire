@@ -11,6 +11,7 @@
       <module fileurl="file://$PROJECT_DIR$/library/oneKeyShareSDK/oneKeyShareSDK.iml" filepath="$PROJECT_DIR$/library/oneKeyShareSDK/oneKeyShareSDK.iml" />
       <module fileurl="file://$PROJECT_DIR$/library/photoPicker/photoPicker.iml" filepath="$PROJECT_DIR$/library/photoPicker/photoPicker.iml" />
       <module fileurl="file://$PROJECT_DIR$/library/selectordialog/selectordialog.iml" filepath="$PROJECT_DIR$/library/selectordialog/selectordialog.iml" />
+      <module fileurl="file://$PROJECT_DIR$/library/updateapk/updateapk.iml" filepath="$PROJECT_DIR$/library/updateapk/updateapk.iml" />
     </modules>
   </component>
 </project>

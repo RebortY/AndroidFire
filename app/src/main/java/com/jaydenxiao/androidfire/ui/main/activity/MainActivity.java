@@ -29,8 +29,6 @@ import com.jaydenxiao.common.daynightmodeutils.ChangeModeController;
 import java.util.ArrayList;
 
 import butterknife.Bind;
-import cn.hugeterry.updatefun.UpdateFunGO;
-import cn.hugeterry.updatefun.config.UpdateKey;
 import fm.jiecao.jcvideoplayer_lib.JCVideoPlayer;
 import rx.functions.Action1;
 
@@ -83,12 +81,12 @@ public class MainActivity extends BaseActivity {
     }
     @Override
     public void initView() {
-        //此处填上在http://fir.im/注册账号后获得的API_TOKEN以及APP的应用ID
-        UpdateKey.API_TOKEN = AppConfig.API_FIRE_TOKEN;
-        UpdateKey.APP_ID = AppConfig.APP_FIRE_ID;
-        //如果你想通过Dialog来进行下载，可以如下设置
-//        UpdateKey.DialogOrNotification=UpdateKey.WITH_DIALOG;
-        UpdateFunGO.init(this);
+//        //此处填上在http://fir.im/注册账号后获得的API_TOKEN以及APP的应用ID
+//        UpdateKey.API_TOKEN = AppConfig.API_FIRE_TOKEN;
+//        UpdateKey.APP_ID = AppConfig.APP_FIRE_ID;
+//        //如果你想通过Dialog来进行下载，可以如下设置
+////        UpdateKey.DialogOrNotification=UpdateKey.WITH_DIALOG;
+//        UpdateFunGO.init(this);
         //初始化菜单
         initTab();
     }
@@ -269,13 +267,13 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        UpdateFunGO.onResume(this);
+//        UpdateFunGO.onResume(this);
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-        UpdateFunGO.onStop(this);
+//        UpdateFunGO.onStop(this);
     }
 
     @Override

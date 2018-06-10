@@ -7,12 +7,17 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 
+import com.jaydenxiao.androidfire.BuildConfig;
 import com.jaydenxiao.androidfire.R;
+import com.jaydenxiao.androidfire.api.Api;
 import com.jaydenxiao.androidfire.app.AppConstant;
 import com.jaydenxiao.androidfire.bean.NewsChannelTable;
+import com.jaydenxiao.androidfire.bean.rep.BaseRep;
+import com.jaydenxiao.androidfire.bean.req.UpdateVersion;
 import com.jaydenxiao.androidfire.ui.main.activity.LoginActivity;
 import com.jaydenxiao.androidfire.ui.main.activity.login.LoginManager;
 import com.jaydenxiao.androidfire.ui.news.activity.NewsChannelActivity;
@@ -23,13 +28,17 @@ import com.jaydenxiao.androidfire.ui.main.presenter.NewsMainPresenter;
 import com.jaydenxiao.androidfire.utils.MyUtils;
 import com.jaydenxiao.common.base.BaseFragment;
 import com.jaydenxiao.common.base.BaseFragmentAdapter;
+import com.loveplusplus.update.UpdateDialog;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import butterknife.Bind;
 import butterknife.OnClick;
+import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action1;
+import rx.schedulers.Schedulers;
 
 /**
  * des:新闻首页首页
@@ -84,6 +93,31 @@ public class NewsMainFragment extends BaseFragment<NewsMainPresenter,NewsMainMod
                 fab.setVisibility(View.GONE);
             }
         });
+
+        Api.getApi().checkUpdate(BuildConfig.VERSION_CODE)
+            .delay(3, TimeUnit.SECONDS)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(new Action1<BaseRep<UpdateVersion>>() {
+                @Override
+                public void call(BaseRep<UpdateVersion> updateVersionBaseRep) {
+                    if (updateVersionBaseRep == null) {
+                        return;
+                    }
+                    if (updateVersionBaseRep.data != null && updateVersionBaseRep.status == 200) {
+                        if (updateVersionBaseRep.data.version > BuildConfig.VERSION_CODE) {
+                            UpdateDialog.show(getActivity(), updateVersionBaseRep.data.message , updateVersionBaseRep
+                                .data.path);
+                        }
+                    }
+                }
+            }, new Action1<Throwable>() {
+                @Override
+                public void call(Throwable throwable) {
+                    Log.e("CheckUpdate", throwable.getLocalizedMessage());
+                }
+            });
+
     }
 
 

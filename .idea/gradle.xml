@@ -3,7 +3,7 @@
   <component name="GradleSettings">
     <option name="linkedExternalProjectsSettings">
       <GradleProjectSettings>
-        <option name="distributionType" value="LOCAL" />
+        <option name="distributionType" value="DEFAULT_WRAPPED" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="gradleHome" value="D:\Android\Android Studio\gradle\gradle-2.14.1" />
         <option name="modules">
@@ -17,6 +17,7 @@
             <option value="$PROJECT_DIR$/library/oneKeyShareSDK" />
             <option value="$PROJECT_DIR$/library/photoPicker" />
             <option value="$PROJECT_DIR$/library/selectordialog" />
+            <option value="$PROJECT_DIR$/library/updateapk" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

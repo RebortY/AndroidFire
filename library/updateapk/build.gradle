@@ -1,0 +1,28 @@
+apply plugin: 'com.android.library'
+
+
+android {
+    compileSdkVersion 24
+    buildToolsVersion "24"
+
+    defaultConfig {
+        minSdkVersion 14
+        targetSdkVersion 24
+        versionCode 3
+        versionName '1.2'
+    }
+
+
+    //库项目不生成 BuildConfig
+    libraryVariants.all {
+        it.generateBuildConfig.enabled = false
+    }
+}
+
+
+dependencies {
+    compile 'com.android.support:support-v4:24.1.0'
+    compile('com.android.support:appcompat-v7:24.1.0') {
+        exclude module: 'support-v4'
+    }
+}

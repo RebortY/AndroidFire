@@ -16,9 +16,19 @@ android {
         applicationId "jaydenxiao.com.androidfire"
         minSdkVersion 16
         targetSdkVersion 24
-        versionCode 4
-        versionName "1.0.3"
+        versionCode project.appversion as int
+        versionName project.appShowName
     }
+
+    signingConfigs {
+        release {
+            storeFile file("${rootProject.getProjectDir()}/release.keystore")
+            storePassword "yang5539795"
+            keyAlias "androidfire"
+            keyPassword "yang5539795"
+        }
+    }
+
     buildTypes {
         release {
             buildConfigField "boolean", "LOG_DEBUG", "false"
@@ -70,6 +80,5 @@ dependencies {
     compile project(':library:oneKeyShareSDK')//分享
     compile project(':library:jcvideoplayer')//视频播放
     compile project(':library:selectordialog')//常用提示框
-
-
+    compile project(path: ':library:updateapk') //应用升级
 }

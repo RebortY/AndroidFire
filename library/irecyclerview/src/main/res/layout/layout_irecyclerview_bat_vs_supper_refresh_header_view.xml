@@ -10,7 +10,9 @@
         android:layout_gravity="left|center"
         android:layout_marginLeft="40dp"
         android:background="@drawable/android_logo"
-        android:scaleType="centerInside" />
+        android:scaleType="centerInside"
+        android:visibility="gone"
+    />
 
     <ImageView
         android:id="@+id/ivSuperMan"
@@ -18,7 +20,9 @@
         android:layout_height="wrap_content"
         android:layout_gravity="right|center"
         android:layout_marginRight="40dp"
-        android:background="@drawable/ios_logo" />
+        android:background="@drawable/ios_logo"
+        android:visibility="gone"
+    />
 
     <ImageView
         android:id="@+id/imageView"

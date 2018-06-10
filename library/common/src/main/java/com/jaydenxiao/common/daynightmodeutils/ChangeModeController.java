@@ -128,7 +128,7 @@ public class ChangeModeController {
                         }
                     }
                 }catch (Exception e){
-                    e.printStackTrace();
+//                    e.printStackTrace();
                 }
                 return view;
             }
